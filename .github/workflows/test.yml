@@ -43,7 +43,7 @@ jobs:
       run: |
         pwd
         ls -la
-        ls -la ~/e2e
+        ls -la /e2e
         touch ~/e2e/config.js
         echo "const config = {"                             > ~/e2e/config.js
         echo "username: '${CYPRESS_SHAIHULUD_USERNAME}',"  >> ~/e2e/config.js
