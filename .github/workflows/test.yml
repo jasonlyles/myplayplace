@@ -32,8 +32,8 @@ jobs:
       uses: abhilash1in/aws-secrets-manager-action@v2.1.0
       with:
         secrets: |
-          shaihulud/acceptance/secrets
+          CYPRESS_SHAIHULUD
         parse-json: true
 
     - name: Check if env variable is set after fetching secrets
-      run: if [ -z ${SHAIHULUD_ACCEPTANCE_SECRETS_CYPRESS_USERNAME+x} ]; then echo "SHAIHULUD_ACCEPTANCE_SECRETS_CYPRESS_USERNAME is unset"; else echo "SHAIHULUD_ACCEPTANCE_SECRETS_CYPRESS_USERNAME is set to '$SHAIHULUD_ACCEPTANCE_SECRETS_CYPRESS_USERNAME'"; fi
+      run: if [ -z ${CYPRESS_SHAIHULUD_USERNAME+x} ]; then echo "CYPRESS_SHAIHULUD_USERNAME is unset"; else echo "CYPRESS_SHAIHULUD_USERNAME is set to '$CYPRESS_SHAIHULUD_USERNAME'"; fi
