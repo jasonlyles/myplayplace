@@ -40,11 +40,12 @@ jobs:
       run: if [ -z ${CYPRESS_SHAIHULUD_USERNAME+x} ]; then echo "CYPRESS_SHAIHULUD_USERNAME is unset"; else echo "CYPRESS_SHAIHULUD_USERNAME is set to '$CYPRESS_SHAIHULUD_USERNAME'"; fi
 
     - name: Write env vars to config file
-      run: echo const config = { > ~/e2e/config.js
-           echo username: '${CYPRESS_SHAIHULUD_USERNAME}', >> ~/e2e/config.js
-           echo password: '${CYPRESS_SHAIHULUD_PASSWORD}' >> ~/e2e/config.js
-           echo }; >> ~/e2e/config.js
-           echo export default config; >> ~/e2e/config.js
+      run: |
+        echo const config = { > ~/e2e/config.js
+        echo username: '${CYPRESS_SHAIHULUD_USERNAME}', >> ~/e2e/config.js
+        echo password: '${CYPRESS_SHAIHULUD_PASSWORD}' >> ~/e2e/config.js
+        echo }; >> ~/e2e/config.js
+        echo export default config; >> ~/e2e/config.js
 
     - name: Show file content
       run: |
