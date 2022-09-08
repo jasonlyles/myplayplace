@@ -42,7 +42,7 @@ jobs:
     - name: Write env vars to config file
       run: |
         pwd
-        ls -la ${pwd}/e2e
+        ls -la ${GITHUB_WORKSPACE}/e2e
         touch ~/e2e/config.js
         echo "const config = {"                             > ~/e2e/config.js
         echo "username: '${CYPRESS_SHAIHULUD_USERNAME}',"  >> ~/e2e/config.js
