@@ -41,11 +41,11 @@ jobs:
 
     - name: Write env vars to config file
       run: |
-        echo const config = {                             > config.js
-        echo username: '${CYPRESS_SHAIHULUD_USERNAME}',  >> config.js
-        echo password: '${CYPRESS_SHAIHULUD_PASSWORD}'   >> config.js
-        echo };                                          >> config.js
-        echo export default config;                      >> config.js
+        echo "const config = {"                             > config.js
+        echo "username: '${CYPRESS_SHAIHULUD_USERNAME}',"  >> config.js
+        echo "password: '${CYPRESS_SHAIHULUD_PASSWORD}'"   >> config.js
+        echo "};"                                          >> config.js
+        echo "export default config;"                      >> config.js
 
     - name: Show file content
       run: |
