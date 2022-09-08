@@ -39,20 +39,16 @@ jobs:
     - name: Check if env variable is set after fetching secrets
       run: if [ -z ${CYPRESS_SHAIHULUD_USERNAME+x} ]; then echo "CYPRESS_SHAIHULUD_USERNAME is unset"; else echo "CYPRESS_SHAIHULUD_USERNAME is set to '$CYPRESS_SHAIHULUD_USERNAME'"; fi
 
-    - name: Check pwd and list files
+    - name: Write env vars to config file
+      run: |
+        mkdir ~/e2e
+        echo const config = { > ~/e2e/config.js
+        echo username: '${CYPRESS_SHAIHULUD_USERNAME}', >> ~/e2e/config.js
+        echo password: '${CYPRESS_SHAIHULUD_PASSWORD}' >> ~/e2e/config.js
+        echo }; >> ~/e2e/config.js
+        echo export default config; >> ~/e2e/config.js
+
+    - name: Show file content
       run: |
         pwd
-        ls -la
-
-    # - name: Write env vars to config file
-    #   run: |
-    #     echo const config = { > ~/e2e/config.js
-    #     echo username: '${CYPRESS_SHAIHULUD_USERNAME}', >> ~/e2e/config.js
-    #     echo password: '${CYPRESS_SHAIHULUD_PASSWORD}' >> ~/e2e/config.js
-    #     echo }; >> ~/e2e/config.js
-    #     echo export default config; >> ~/e2e/config.js
-
-    # - name: Show file content
-    #   run: |
-    #     pwd
-    #     cat ~/e2e/config.js
+        cat ~/e2e/config.js
