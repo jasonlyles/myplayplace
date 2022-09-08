@@ -41,6 +41,7 @@ jobs:
 
     - name: Write env vars to config file
       run: |
+        touch ~/e2e/config.js
         echo "const config = {"                             > ~/e2e/config.js
         echo "username: '${CYPRESS_SHAIHULUD_USERNAME}',"  >> ~/e2e/config.js
         echo "password: '${CYPRESS_SHAIHULUD_PASSWORD}'"   >> ~/e2e/config.js
