@@ -21,6 +21,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/checkout@v2
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -37,3 +38,15 @@ jobs:
 
     - name: Check if env variable is set after fetching secrets
       run: if [ -z ${CYPRESS_SHAIHULUD_USERNAME+x} ]; then echo "CYPRESS_SHAIHULUD_USERNAME is unset"; else echo "CYPRESS_SHAIHULUD_USERNAME is set to '$CYPRESS_SHAIHULUD_USERNAME'"; fi
+
+    - name: Write env vars to config file
+      run: echo const config = { > ~/e2e/config.js
+           echo username: '${CYPRESS_SHAIHULUD_USERNAME}', >> ~/e2e/config.js
+           echo password: '${CYPRESS_SHAIHULUD_PASSWORD}' >> ~/e2e/config.js
+           echo }; >> ~/e2e/config.js
+           echo export default config; >> ~/e2e/config.js
+
+    - name: Show file content
+      run: |
+        pwd
+        cat ~/e2e/config.js
