@@ -41,13 +41,15 @@ jobs:
 
     - name: Write env vars to config file
       run: |
-        echo "const config = {"                             > config.js
-        echo "username: '${CYPRESS_SHAIHULUD_USERNAME}',"  >> config.js
-        echo "password: '${CYPRESS_SHAIHULUD_PASSWORD}'"   >> config.js
-        echo "};"                                          >> config.js
-        echo "export default config;"                      >> config.js
+        mkdir ~/e2e
+        echo "const config = {"                             > ~/e2e/config.js
+        echo "username: '${CYPRESS_SHAIHULUD_USERNAME}',"  >> ~/e2e/config.js
+        echo "password: '${CYPRESS_SHAIHULUD_PASSWORD}'"   >> ~/e2e/config.js
+        echo "};"                                          >> ~/e2e/config.js
+        echo "export default config;"                      >> ~/e2e/config.js
 
     - name: Show file content
       run: |
         pwd
-        cat config.js
+        ls -la
+        cat ~/e2e/config.js
